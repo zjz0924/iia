@@ -44,11 +44,6 @@
 				location="classpath*:common/*.properties, classpath*:production/*.properties" />
 	</beans>
 	
-	<beans profile="test">
-		<context:property-placeholder ignore-unresolvable="true"
-				location="classpath*:common/*.properties, classpath*:test/*.properties" />
-	</beans>
-	
 	<beans profile="dev">
 		<context:property-placeholder ignore-unresolvable="true"
 				location="classpath*:common/*.properties, classpath*:dev/*.properties" />

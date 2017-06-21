@@ -1,5 +1,9 @@
 package cn.wow.support.web;
 
+import java.io.File;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.web.multipart.MultipartFile;
+
 import cn.wow.common.utils.AjaxVO;
 import cn.wow.support.utils.Contants;
 
@@ -9,6 +13,10 @@ import cn.wow.support.utils.Contants;
  * 2017-1-5
  */
 public class CommonController {
+	
+	// 照片上传根路径
+	@Value("${img.root.url}")
+	private String rootPath;
 	
 	/**
 	 * 返回响应结果
@@ -65,5 +73,28 @@ public class CommonController {
 	public void getResponse(AjaxVO vo, boolean flag, String msg){
 		vo.setSuccess(flag);
 		vo.setMsg(msg);
+	}
+	
+	
+	public String uploadImg(MultipartFile multipartFile, String path) throws Exception{
+		if(multipartFile != null && multipartFile.getSize() > 0){
+			// 原始文件名
+			String sourceName = multipartFile.getOriginalFilename();
+			String newName = System.currentTimeMillis() + sourceName.substring(sourceName.indexOf("."));
+			// 文件上传路径
+			String uploadPath = rootPath + "/" + path ;
+			
+			File uploadPathFile = new File(uploadPath);
+			if(!uploadPathFile.exists()){
+				uploadPathFile.mkdirs();
+			}
+			
+			File srcFile = new File(uploadPath + newName);
+			multipartFile.transferTo(srcFile);
+			
+			return path + newName;
+		}
+		
+		return null;
 	}
 }

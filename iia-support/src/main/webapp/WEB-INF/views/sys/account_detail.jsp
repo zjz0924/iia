@@ -26,7 +26,7 @@
 				$("#saveBtn").attr("class", "btn btn-primary disabled");
 				
 				if(resultCode == "01" || resultCode == "03"){ 
-					window.location.href = "${ctx}/userController/list";
+					window.location.href = "${ctx}/accountController/list";
 				}else{
 					// 设置按钮可点
 					$("#saveBtn").attr("class", "btn btn-primary");
@@ -66,7 +66,7 @@
 		<div class="col-lg-12">
 			<ol class="breadcrumb">
 				<li><i class="fa fa-home"></i><a href="javascript:void(0)" onclick="">首页</a></li>
-				<li><i class="fa fa-user"></i><a href="${ctx}/userController/list">用户管理</a></li>
+				<li><i class="fa fa-user"></i><a href="${ctx}/accountController/list">用户管理</a></li>
 				<li><i class="fa fa-user"></i>用户信息</li>
 			</ol>
 		</div>
@@ -82,7 +82,7 @@
 				</div>
 
 				<div class="panel-body" style="padding-top:30px;padding-left:30px;">
-					<form action="${ctx}/userController/save" method="post" onsubmit="return checkData();">
+					<form action="${ctx}/accountController/save" method="post" onsubmit="return checkData();">
 						<input type="hidden" id="id" name="id" value="${facadeBean.id}"/>
 						
 						<div class="form-group height_30">

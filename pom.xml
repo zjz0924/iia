@@ -14,7 +14,7 @@
 	<modules>
 		<module>iia-support</module>
 		<module>iia-common</module>
-		<module>iia-easy</module>
+		<!-- <module>iia-easy</module> -->
 	</modules>
 	
 	<pluginRepositories>

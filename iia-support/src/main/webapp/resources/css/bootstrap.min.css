@@ -6368,6 +6368,9 @@ button.close {
 	width:8%;
 	font-weight: 700;
 	margin-bottom: 5px;
+	font-size: 14px;
+    text-align: right;
+    padding-right: 15px;
 }
 
 .queryTable .contentTd{
@@ -6384,4 +6387,12 @@ button.close {
 
 .height_30{
 	height:30px;
+}
+
+.text_size_14{
+	font-size:14px;
+}
+
+.btn_padding{
+	padding: 1px 6px;
 }

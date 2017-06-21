@@ -10,9 +10,6 @@ import java.io.Serializable;
  */
 public class AjaxVO implements Serializable{
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -6779629759636426487L;
 
 	private boolean success = true;
@@ -20,6 +17,21 @@ public class AjaxVO implements Serializable{
 	private String msg;
 	
 	private Object data;
+	
+	public AjaxVO(){
+		
+	}
+	
+	public AjaxVO(String msg, boolean success){
+		this.msg = msg;
+		this.success = success;
+	}
+	
+	public AjaxVO(String msg, boolean success, Object data){
+		this.msg = msg;
+		this.success = success;
+		this.data = data;
+	}
 
 	public boolean getSuccess() {
 		return success;

@@ -96,24 +96,24 @@
 							<table class="table table-bordered table-striped table-condensed table-hover">
 								<thead>
 									<tr>
-										<th>序号</th>
-										<th>用户名</th>
-										<th>昵称</th>
-										<th>手机</th>
-										<th>状态</th>
-										<th>创建时间</th>
-										<th>操作</th>
+										<th class="text_size_14">序号</th>
+										<th class="text_size_14">用户名</th>
+										<th class="text_size_14">昵称</th>
+										<th class="text_size_14">手机</th>
+										<th class="text_size_14">状态</th>
+										<th class="text_size_14">创建时间</th>
+										<th class="text_size_14">操作</th>
 									</tr>
 								</thead>
 
 								<tbody>
 									<c:forEach items="${dataList}" var="vo" varStatus="vst">
 										<tr>
-											<td class="text-center" style="width:8%;">${vst.index + 1}</td>
-											<td class="text-center" style="width:10%;">${vo.userName}</td>
-											<td class="text-center" style="width:10%;">${vo.nickName}</td>
-											<td class="text-center" style="width:12%;">${vo.mobile}</td>
-											<td class="text-center" style="width:8%;">
+											<td class="text-center text_size_14" style="width:8%;">${vst.index + 1}</td>
+											<td class="text-center text_size_14" style="width:10%;">${vo.userName}</td>
+											<td class="text-center text_size_14" style="width:10%;">${vo.nickName}</td>
+											<td class="text-center text_size_14" style="width:12%;">${vo.mobile}</td>
+											<td class="text-center text_size_14" style="width:8%;">
 												<c:choose>
 													<c:when test="${vo.lock == 'N'}">
 														<span class="label label-success">正常</span>
@@ -123,24 +123,24 @@
 													</c:otherwise>
 												</c:choose>
 											</td>
-											<td class="text-center" style="width:18%;">
+											<td class="text-center text_size_14" style="width:18%;">
 												<fmt:formatDate value='${vo.createTime}' type="date" pattern="yyyy-MM-dd hh:mm:ss" />
 											</td>
 											<td>
-												<button type="button" class="btn btn-default" onclick="goTo('detail?id=${vo.id}&mode=readonly')">查看</button>
-												<button type="button" class="btn btn-success" onclick="goTo('detail?id=${vo.id}')">编辑</button>
-												<button type="button" class="btn btn-danger" onclick="confirm('是否确定删除该记录？','delete?id=${vo.id}')">删除</button> 
+												<button type="button" class="btn btn-default btn_padding" onclick="goTo('detail?id=${vo.id}&mode=readonly')">查看</button>&nbsp;
+												<button type="button" class="btn btn-success btn_padding" onclick="goTo('detail?id=${vo.id}')">编辑</button>&nbsp;
+												<button type="button" class="btn btn-danger btn_padding" onclick="confirm('是否确定删除该记录？','delete?id=${vo.id}')">删除</button> &nbsp;
 												
 												<c:choose>
 													<c:when test="${vo.lock == 'N'}">
-														<button type="button" class="btn btn-warning" onclick="confirm('是否确认锁定用户？','lock?id=${vo.id}&lock=Y')">锁定</button>
+														<button type="button" class="btn btn-warning btn_padding" onclick="confirm('是否确认锁定用户？','lock?id=${vo.id}&lock=Y')">锁定</button>&nbsp;
 													</c:when>
 													<c:otherwise>
-														<button type="button" class="btn btn-info" onclick="confirm('是否确认解锁用户？','lock?id=${vo.id}&lock=N')">解锁</button>
+														<button type="button" class="btn btn-info btn_padding" onclick="confirm('是否确认解锁用户？','lock?id=${vo.id}&lock=N')">解锁</button>&nbsp;
 													</c:otherwise>
 												</c:choose>
 
-												<button type="button" class="btn btn-primary" onclick="confirm('是否确认重置密码？','resetPwd?id=${vo.id}')">重置密码</button>
+												<button type="button" class="btn btn-primary btn_padding" onclick="confirm('是否确认重置密码？','resetPwd?id=${vo.id}')">重置密码</button>
 											</td>
 										</tr>
 									</c:forEach>

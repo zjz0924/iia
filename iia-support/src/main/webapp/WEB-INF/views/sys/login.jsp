@@ -11,8 +11,6 @@
 	    <meta name="viewport" content="width=device-width, initial-scale=1">
 	    <title>Login</title>		
 		
-		<!-- Import google fonts - Heading first/ text second -->
-        <link rel='stylesheet' type='text/css' href='http://fonts.useso.com/css?family=Open+Sans:400,700|Droid+Sans:400,700' />
         <!--[if lt IE 9]>
 		<link href="http://fonts.useso.com/css?family=Open+Sans:400" rel="stylesheet" type="text/css" />
 		<link href="http://fonts.useso.com/css?family=Open+Sans:700" rel="stylesheet" type="text/css" />

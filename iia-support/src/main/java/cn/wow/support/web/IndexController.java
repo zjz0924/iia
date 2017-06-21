@@ -24,8 +24,10 @@ public class IndexController {
 	
 	@RequestMapping(value = "/index")
 	public String index(HttpServletRequest request, Model model) {
-		Account account = (Account) request.getSession().getAttribute(Contants.CURRENT_ACCOUNT);
-		 
+		Account currentAccount = (Account) request.getSession().getAttribute(Contants.CURRENT_ACCOUNT);
+		
+		
+		model.addAttribute("currentAccount", currentAccount);
 		return "sys/index";
 	}
 
