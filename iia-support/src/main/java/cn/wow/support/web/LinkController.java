@@ -38,10 +38,6 @@ public class LinkController extends CommonController {
 	@Autowired
 	private LinkService linkService;
 
-	//照片资源路径
-  	@Value("${res.url.root}")
-  	protected String resUrl;
-
 	// 链接图片路径
 	@Value("${img.link.url}")
 	private String linkPath;

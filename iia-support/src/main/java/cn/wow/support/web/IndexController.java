@@ -1,5 +1,7 @@
 package cn.wow.support.web;
 
+import java.text.SimpleDateFormat;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,11 +28,24 @@ public class IndexController {
 	public String index(HttpServletRequest request, Model model) {
 		Account currentAccount = (Account) request.getSession().getAttribute(Contants.CURRENT_ACCOUNT);
 		
-		
 		model.addAttribute("currentAccount", currentAccount);
 		return "sys/index";
 	}
 
+	
+	@RequestMapping(value = "/main")
+	public String main(HttpServletRequest request, Model model) {
+		Account currentAccount = (Account) request.getSession().getAttribute(Contants.CURRENT_ACCOUNT);
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		String loginTime = sdf.format(request.getSession().getCreationTime());
+		
+		model.addAttribute("currentAccount", currentAccount);
+		model.addAttribute("loginTime", loginTime);
+		return "sys/main";
+	}
+	
+	
 }
 
 		

@@ -18,6 +18,11 @@ public class CommonController {
 	@Value("${img.root.url}")
 	private String rootPath;
 	
+	//照片资源路径
+  	@Value("${res.url.root}")
+  	protected String resUrl;
+  	
+	
 	/**
 	 * 返回响应结果
 	 * @param vo    返回对象

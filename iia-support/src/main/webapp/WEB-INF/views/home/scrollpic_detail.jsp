@@ -12,10 +12,10 @@
     <link href="${ctx}/resources/css/font-awesome.min.css" rel="stylesheet">
     <link href="${ctx}/resources/css/style.min.css" rel="stylesheet">
     <link href="${ctx}/resources/css/add-ons.min.css" rel="stylesheet">
-   	<script type="text/javascript" src="${ctx}/resources/js/artDialog4.1.2/artDialog.source.js"></script>
+    <script src="${ctx}/resources/js/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="${ctx}/resources/js/artDialog4.1.2/artDialog.source.js"></script>
 	<script type="text/javascript" src="${ctx}/resources/js/artDialog4.1.2/jquery.artDialog.source.js?skin=idialog"></script>
 	<script type="text/javascript" src="${ctx}/resources/js/artDialog4.1.2/plugins/iframeTools.source.js"></script>
-    <script src="${ctx}/resources/js/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="${ctx}/resources/js/My97DatePicker/WdatePicker.js"></script>
     <script type="text/javascript" src="${ctx}/resources/js/tools.js"></script>
 
@@ -28,7 +28,7 @@
                 $("#saveBtn").attr("class", "btn btn-primary disabled");
 
                 if(resultCode == "01" || resultCode == "03"){ 
-                    window.location.href = "${ctx}/linkController/list";
+                    window.location.href = "${ctx}/scrollPicController/list";
                 }else{
                     // 设置按钮可点
                     $("#saveBtn").attr("class", "btn btn-primary");
@@ -49,23 +49,13 @@
 			$("#saveBtn").attr("class", "btn btn-primary disabled");
         	
 			if(isNull("${facadeBean.id}")){
-				if(isNull($("#logo").val())){
+				if(isNull($("#url").val())){
 					art.dialog.tips("请选择上传的照片", 2, "error");
 					return false;
 				}
 			}
-        	
-        	if(!isRequired("name", "名称")){ 
-				$("#saveBtn").attr("class", "btn btn-primary");
-				return false;  
-			}
-        	
-        	if(!isRequired("url", "链接地址")){ 
-				$("#saveBtn").attr("class", "btn btn-primary");
-				return false;  
-			}
 			
-        	var sort = $("#sort").val();
+			var sort = $("#sort").val();
         	if(!isNull(sort) && !isPositiveNum(sort)){
         		art.dialog.tips("排序号必须为正整数", 2, "error");
         		$("#saveBtn").attr("class", "btn btn-primary");
@@ -82,8 +72,8 @@
         <div class="col-lg-12">
             <ol class="breadcrumb">
                 <li><i class="fa fa-home"></i>首页</li>
-                <li><i class="fa fa-link"></i><a href="${ctx}/linkController/list">友情链接管理</a></li>
-                <li><i class="fa fa-link"></i>链接信息</li>
+                <li><i class="fa fa-picture-o"></i><a href="${ctx}/scrollPicController/list">滚动大图管理</a></li>
+                <li><i class="fa fa-picture-o"></i>照片信息</li>
             </ol>
         </div>
     </div>
@@ -92,60 +82,52 @@
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h2><i class="fa fa-user red"></i><span class="break"></span><strong>链接信息</strong></h2>
-
+                    <h2><i class="fa fa-picture-o"></i><span class="break"></span><strong>照片信息</strong></h2>
                 </div>
 
                 <div class="panel-body" style="padding-top:30px;padding-left:30px;">
-                    <form class="form-horizontal" action="${ctx}/linkController/save" method="post" onsubmit="return checkData();" enctype="multipart/form-data">
+                    <form action="${ctx}/scrollPicController/save" method="post" onsubmit="return checkData();" enctype="multipart/form-data">
                         <input type="hidden" id="id" name="id" value="${facadeBean.id}"/>
                         
-                        <!-- 照片 -->
+                         <!-- 照片 -->
 						<div class="form-group <c:if test="${empty facadeBean.id }">height_30</c:if>" <c:if test="${not empty facadeBean.id }">style="height:150px;"</c:if>>
 							<label class="col-md-2 control-label">
-								<c:if test="${empty facadeBean.id }"><span class="span-request">*</span></c:if>logo
+								<c:if test="${empty facadeBean.id }"><span class="span-request">*</span></c:if>图片
 							</label>
 							<div class="col-md-3">
 								<c:if test="${not empty facadeBean.id }">
-									<img src="${resUrl}${facadeBean.logo}" style="width:100px;height:100px;margin-left:10px;margin-bottom:20px;">
+									<img src="${resUrl}${facadeBean.url}" style="width:100px;height:100px;margin-left:10px;margin-bottom:20px;">
 								</c:if>
 								<c:if test="${mode != 'readonly'}">
-									<input type="file" id="logo" name="logo" class="form-control">
+									<input type="file" id="url" name="url" class="form-control">
 								</c:if>
 							</div>
 						</div>
-
-                        <div class="form-group height_30">
-                            <label class="col-md-2 control-label"><span class="asterisk">*</span>名称</label>
+                        
+                        <div class="form-group" style="height:110px;">
+                            <label class="col-md-2 control-label">内容</label>
                             <div class="col-md-3">
-                                <input type="text" id="name" name="name" class="form-control" value="${facadeBean.name}">
-                            </div>
-                        </div>
-
-                        <div class="form-group height_30">
-                            <label class="col-md-2 control-label"><span class="asterisk">*</span>链接地址</label>
-                            <div class="col-md-3">
-                                <input type="text" id="url" name="url" class="form-control" value="${facadeBean.url}">
+                                <textarea id="content" name="content" class="form-control" rows="5">${facadeBean.content}</textarea>
                             </div>
                         </div>
 
                         <div class="form-group height_30">
                             <label class="col-md-2 control-label">排序号</label>
                             <div class="col-md-3">
-                                <input type="text" id="sort" name="sort" class="form-control" value="${facadeBean.sort}">
+                                <input type="text" id="sort" name="sort" class="form-control"  value="${facadeBean.sort}">
                             </div>
                         </div>
-                        
-                        <c:if test="${not empty facadeBean.id }"> 
-					        <div class="form-group height_30">
-			                    <label class="col-md-2 control-label">创建时间</label>
-			                    <div class="col-md-3">
-			                        <p class="form-control-static">
-			                        	<fmt:formatDate value='${facadeBean.createTime}' type="date" pattern="yyyy-MM-dd hh:mm:ss" />
-			                        </p>
-			                    </div>
-			                </div>        
-						</c:if>
+
+						<c:if test="${not empty facadeBean.id }"> 
+	                        <div class="form-group height_30">
+	                            <label class="col-md-2 control-label">创建时间</label>
+	                            <div class="col-md-3">
+	                                <p class="form-control-static">
+	                                    <fmt:formatDate value='${facadeBean.createTime}' type="date" pattern="yyyy-MM-dd hh:mm:ss" />
+	                                </p>
+	                            </div>
+	                        </div>
+                        </c:if>
 
                         <c:if test="${mode != 'readonly'}">
                             <div class="form-group height_30 text-center">

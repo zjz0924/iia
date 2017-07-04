@@ -45,6 +45,8 @@
 					var height = $(this).contents().height() + 10;
 					$(this).height(height < 650 ? 650 : height);
 				});
+				
+				openFrame("main");
 			});
 		
 			function openFrame(src) {
@@ -114,7 +116,7 @@
 							<li>
 								<a href="javascript:void(0)"><i class="fa fa-home"></i><span class="text"> 首页管理</span> <span class="fa fa-angle-down pull-right"></span></a>
 								<ul class="nav sub">									
-									<li><a href="javascript:void(0)" onclick="openFrame('accountController/list')"><i class="fa fa-picture-o"></i><span class="text">滚动图片管理</span></a></li>
+									<li><a href="javascript:void(0)" onclick="openFrame('scrollPicController/list')"><i class="fa fa-picture-o"></i><span class="text">滚动图片管理</span></a></li>
 									<li><a href="javascript:void(0)" onclick="openFrame('linkController/list')"><i class="fa fa-link"></i><span class="text">友情链接管理</span></a></li>
 								</ul>
 							</li>
