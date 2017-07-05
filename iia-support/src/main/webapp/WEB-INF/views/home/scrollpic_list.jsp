@@ -7,17 +7,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <link href="${ctx}/resources/css/bootstrap.min.css" rel="stylesheet">
-    <link href="${ctx}/resources/css/font-awesome.min.css" rel="stylesheet">
-    <link href="${ctx}/resources/css/style.min.css" rel="stylesheet">
-    <link href="${ctx}/resources/css/add-ons.min.css" rel="stylesheet">
-    <script src="${ctx}/resources/js/jquery-2.1.1.min.js"></script>
-    <script type="text/javascript" src="${ctx}/resources/js/artDialog4.1.2/artDialog.source.js"></script>
-	<script type="text/javascript" src="${ctx}/resources/js/artDialog4.1.2/jquery.artDialog.source.js?skin=idialog"></script>
-	<script type="text/javascript" src="${ctx}/resources/js/artDialog4.1.2/plugins/iframeTools.source.js"></script>
-    <script type="text/javascript" src="${ctx}/resources/js/My97DatePicker/WdatePicker.js"></script>
-    <script type="text/javascript" src="${ctx}/resources/js/tools.js"></script>
+	<%@include file="../common/header.jsp"%>
 </head>
 
 <body>
@@ -75,11 +65,11 @@
                                 <tbody>
                                     <c:forEach items="${dataList}" var="vo" varStatus="vst">
                                         <tr>
-                                            <td class="text-center" style="width:8%;">${vst.index + 1}</td>
-                                            <td class="text-center" style="width:10%;"><img src="${resUrl}${vo.url}" style="width:50px;height:50px;"></td>
-                                            <td class="text-center" style="width:35%;">${vo.content}</td>
-                                            <td class="text-center" style="width:10%;">${vo.sort}</td>
-                                            <td class="text-center" style="width:20%;"><fmt:formatDate value='${vo.createTime}' type="date" pattern="yyyy-MM-dd hh:mm:ss" /></td>
+                                            <td class="text-center text_size_14" style="width:8%;">${vst.index + 1}</td>
+                                            <td class="text-center text_size_14" style="width:10%;"><img src="${resUrl}${vo.url}" style="width:50px;height:50px;"></td>
+                                            <td class="text-center text_size_14" style="width:35%;">${vo.content}</td>
+                                            <td class="text-center text_size_14" style="width:10%;">${vo.sort}</td>
+                                            <td class="text-center text_size_14" style="width:20%;"><fmt:formatDate value='${vo.createTime}' type="date" pattern="yyyy-MM-dd hh:mm:ss" /></td>
                                             <td>
                                                 <button type="button" class="btn btn-default btn_padding" onclick="goTo('detail?id=${vo.id}&mode=readonly')">查看</button>
                                                 <button type="button" class="btn btn-success btn_padding" onclick="goTo('detail?id=${vo.id}')">编辑</button>

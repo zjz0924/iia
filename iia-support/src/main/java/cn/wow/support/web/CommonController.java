@@ -1,7 +1,16 @@
 package cn.wow.support.web;
 
 import java.io.File;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Date;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import cn.wow.common.utils.AjaxVO;
@@ -22,7 +31,7 @@ public class CommonController {
   	@Value("${res.url.root}")
   	protected String resUrl;
   	
-	
+  	
 	/**
 	 * 返回响应结果
 	 * @param vo    返回对象
@@ -81,6 +90,9 @@ public class CommonController {
 	}
 	
 	
+	/**
+	 * 普通照片上传
+	 */
 	public String uploadImg(MultipartFile multipartFile, String path) throws Exception{
 		if(multipartFile != null && multipartFile.getSize() > 0){
 			// 原始文件名
@@ -102,4 +114,77 @@ public class CommonController {
 		
 		return null;
 	}
+	
+	
+	
+	/**
+	 * ckeditor 文件上传（图片上传/超链接文件上传）
+	 */
+	@RequestMapping(value="uploadEditorFile")
+    public void uploadFile(@RequestParam("upload") MultipartFile multipartFile,HttpServletRequest request,HttpServletResponse response){
+        response.setContentType("text/html;charset=UTF-8");
+        response.setHeader("X-Frame-Options", "SAMEORIGIN");
+        String CKEditorFuncNum = request.getParameter("CKEditorFuncNum");
+        // 类型
+		String type = request.getParameter("type");
+		// 上传路径
+        String uploadPath = rootPath + "editor/" + type + "/";
+        // 下载路径
+        String downloadPath = resUrl + "editor/" + type + "/";
+        
+        File f = new File(uploadPath);
+        if(!f.exists()){
+        	f.mkdirs();
+        }
+        
+        try {
+        	PrintWriter out = null;
+        	 
+            String fileName= multipartFile.getOriginalFilename();
+    		String uploadContentType = multipartFile.getContentType();
+    		
+    		 /*
+    		String expandedName ="";
+    		if (uploadContentType.equals("image/pjpeg")|| uploadContentType.equals("image/jpeg")) {  
+                // IE6上传jpg图片的headimageContentType是image/pjpeg，而IE9以及火狐上传的jpg图片是image/jpeg  
+                expandedName = ".jpg";  
+            } else if (uploadContentType.equals("image/png") || uploadContentType.equals("image/x-png")) {  
+                // IE6上传的png图片的headimageContentType是"image/x-png"  
+                expandedName = ".png";  
+            } else if (uploadContentType.equals("image/gif")) {  
+                expandedName = ".gif";  
+            } else if (uploadContentType.equals("image/bmp")) {  
+                expandedName = ".bmp";  
+            } else {  
+                out.println("<script type=\"text/javascript\">");  
+                out.println("window.parent.CKEDITOR.tools.callFunction(" + CKEditorFuncNum + ",''," + "'文件格式不正确（必须为.jpg/.gif/.bmp/.png文件）');");  
+                out.println("</script>");  
+                return ;  
+            }  
+    		
+    		// 限制文件大小 
+			if (multipartFile.getSize() > 600 * 1024) {
+				out.println("<script type=\"text/javascript\">");
+				out.println("window.parent.CKEDITOR.tools.callFunction(" + CKEditorFuncNum + ",''," + "'文件大小不得大于600k');");
+				out.println("</script>");
+				return;
+			}
+    		*/
+    		
+			String newName = "";
+			if (uploadContentType.startsWith("image")) {
+				newName = System.currentTimeMillis() + fileName.substring(fileName.indexOf("."));
+			} else {
+				newName = fileName;
+			}
+			multipartFile.transferTo(new File(uploadPath + newName));
+
+			out = response.getWriter();
+			out.println("<script type=\"text/javascript\">window.parent.CKEDITOR.tools.callFunction(" + CKEditorFuncNum + ", '" + downloadPath + newName + "','')</script>");
+			out.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }  
+    }
+	
 }

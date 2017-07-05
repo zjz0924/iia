@@ -124,7 +124,7 @@
 							<li>
 								<a href="javascript:void(0)"><i class="fa fa-user-md"></i><span class="text"> 协会管理</span> <span class="fa fa-angle-down pull-right"></span></a>
 								<ul class="nav sub">									
-									<li><a href="javascript:void(0)" onclick="openFrame('accountController/list')"><i class="fa fa-book"></i><span class="text">简介管理</span></a></li>
+									<li><a href="javascript:void(0)" onclick="openFrame('introduction/detail')"><i class="fa fa-book"></i><span class="text">简介管理</span></a></li>
 									<li><a href="javascript:void(0)" onclick="openFrame('accountController/list')"><i class="fa fa-sitemap"></i><span class="text">组织架构管理</span></a></li>
 									<li><a href="javascript:void(0)" onclick="openFrame('accountController/list')"><i class="fa fa-list-alt"></i><span class="text">章程管理</span></a></li>
 									<li><a href="javascript:void(0)" onclick="openFrame('accountController/list')"><i class="fa fa-edit"></i><span class="text">大事记管理</span></a></li>
