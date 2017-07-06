@@ -41,7 +41,7 @@
 		<script type="text/javascript">
 			$(function(){
 				$("#modular").load(function() {
-					$(this).height(0); //用于每次刷新时控制IFRAME高度初始化 
+					$(this).height(0); //用于每次刷新时控制IFRAME高度初始化   
 					var height = $(this).contents().height() + 10;
 					$(this).height(height < 650 ? 650 : height);
 				});
@@ -54,7 +54,7 @@
 				frame.src = "${ctx}/" + src;
 			}
 			
-			function adapter(height) {
+			function adapter(height) {  alert(2);
 				$("#modular").height(height < 650 ? 650 : height);
 			}
 			
@@ -124,11 +124,11 @@
 							<li>
 								<a href="javascript:void(0)"><i class="fa fa-user-md"></i><span class="text"> 协会管理</span> <span class="fa fa-angle-down pull-right"></span></a>
 								<ul class="nav sub">									
-									<li><a href="javascript:void(0)" onclick="openFrame('introduction/detail')"><i class="fa fa-book"></i><span class="text">简介管理</span></a></li>
-									<li><a href="javascript:void(0)" onclick="openFrame('accountController/list')"><i class="fa fa-sitemap"></i><span class="text">组织架构管理</span></a></li>
-									<li><a href="javascript:void(0)" onclick="openFrame('accountController/list')"><i class="fa fa-list-alt"></i><span class="text">章程管理</span></a></li>
-									<li><a href="javascript:void(0)" onclick="openFrame('accountController/list')"><i class="fa fa-edit"></i><span class="text">大事记管理</span></a></li>
-									<li><a href="javascript:void(0)" onclick="openFrame('accountController/list')"><i class="fa fa-video-camera"></i><span class="text">声像图片管理</span></a></li>
+									<li><a href="javascript:void(0)" onclick="openFrame('introduction/detail?type=intro')"><i class="fa fa-book"></i><span class="text">简介管理</span></a></li>
+									<li><a href="javascript:void(0)" onclick="openFrame('introduction/detail?type=architecture')"><i class="fa fa-sitemap"></i><span class="text">组织架构管理</span></a></li>
+									<li><a href="javascript:void(0)" onclick="openFrame('introduction/detail?type=rule')"><i class="fa fa-list-alt"></i><span class="text">章程管理</span></a></li>
+									<li><a href="javascript:void(0)" onclick="openFrame('introduction/detail?type=event')"><i class="fa fa-edit"></i><span class="text">大事记管理</span></a></li>
+									<li><a href="javascript:void(0)" onclick="openFrame('soundPic/list')"><i class="fa fa-video-camera"></i><span class="text">声像图片管理</span></a></li>
 								</ul>
 							</li>
 						

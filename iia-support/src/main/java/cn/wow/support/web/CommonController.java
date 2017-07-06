@@ -127,15 +127,6 @@ public class CommonController {
         String CKEditorFuncNum = request.getParameter("CKEditorFuncNum");
         // 类型
 		String type = request.getParameter("type");
-		// 上传路径
-        String uploadPath = rootPath + "editor/" + type + "/";
-        // 下载路径
-        String downloadPath = resUrl + "editor/" + type + "/";
-        
-        File f = new File(uploadPath);
-        if(!f.exists()){
-        	f.mkdirs();
-        }
         
         try {
         	PrintWriter out = null;
@@ -171,12 +162,27 @@ public class CommonController {
 			}
     		*/
     		
-			String newName = "";
+    		// 文件名称（图片会重命名，其它文件不重命名）
+			String newName = null;
+			// 文件类型
+			String fileType = null;
 			if (uploadContentType.startsWith("image")) {
 				newName = System.currentTimeMillis() + fileName.substring(fileName.indexOf("."));
+				fileType = "image";
 			} else {
 				newName = fileName;
+				fileType = "doc";
 			}
+			
+			// 上传路径
+            String uploadPath = rootPath + "editor/" + type + "/" + fileType + "/";
+            // 下载路径
+            String downloadPath = resUrl + "editor/" + type + "/" + fileType + "/";
+            
+            File f = new File(uploadPath);
+            if(!f.exists()){
+            	f.mkdirs();
+            }
 			multipartFile.transferTo(new File(uploadPath + newName));
 
 			out = response.getWriter();

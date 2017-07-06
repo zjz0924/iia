@@ -28,25 +28,32 @@ public class IntroductionController extends CommonController {
 
 	@Autowired
 	private IntroductionService introductionService;
-
-	private final Long INTRO_ID = 1l;
-
+	// 协会简介
+	private final String INTRO = "intro";
+	// 组织架构
+	private final String ARCHITECTURE = "architecture";
+	// 章程
+	private final String RULE = "rule";
+	// 大事件
+	private final String EVENT = "event";
+	
 	@RequestMapping(value = "/detail")
-	public String detail(HttpServletRequest request, Model model) {
-
-		Introduction introduction = introductionService.selectOne(INTRO_ID);
+	public String detail(HttpServletRequest request, Model model, String type) {
+		
+		Introduction introduction = introductionService.selectOne(getId(type));
 
 		model.addAttribute("facadeBean", introduction);
+		model.addAttribute("type", type);
 		return "association/intro_detail";
 	}
 	
 	@ResponseBody
 	@RequestMapping(value = "/update")
-	public AjaxVO update(HttpServletRequest request, Model model, String content) {
+	public AjaxVO update(HttpServletRequest request, Model model, String content, String type) {
 		AjaxVO vo = new AjaxVO();
 		
 		try{
-			Introduction introduction = introductionService.selectOne(INTRO_ID);
+			Introduction introduction = introductionService.selectOne(getId(type));
 			introduction.setContent(content);
 			introductionService.update(introduction);
 			
@@ -58,4 +65,19 @@ public class IntroductionController extends CommonController {
 		return vo;
 	}
 
+	
+	public Long getId(String type) {
+		Long introId = null;
+		if (INTRO.equals(type)) {
+			introId = 1l;
+		} else if (ARCHITECTURE.equals(type)) {
+			introId = 2l;
+		} else if (RULE.equals(type)) {
+			introId = 3l;
+		} else {
+			introId = 4l;
+		}
+		return introId;
+	}
+	
 }
