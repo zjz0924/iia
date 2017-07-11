@@ -10,13 +10,13 @@
     <%@include file="../common/header.jsp"%>
     
     <script type="text/javascript">
-    	var filebrowserUploadUrl = "${ctx}/news/uploadEditorFile?type=news";
+    	var filebrowserUploadUrl = "${ctx}/train/uploadEditorFile?type=train/${type}";
 	</script>
 	<script type="text/javascript" src="${ctx}/resources/js/ckeditor_full/ckeditor.js"></script>
 	<script type="text/javascript" src="${ctx}/resources/js/ckeditor_full/lang/zh-cn.js"></script>
 
     <script type="text/javascript">
-    	var editor;   	
+    	var editor;
     	
         $(function(){
             var mode = "${mode}";
@@ -29,26 +29,20 @@
         function save(){
 			var content = editor.getData();
 			var title = $("#title").val();
-			var type = $("#type").val();
 			
 			if(isNull(title)){
 				art.dialog.tips("标题 不能为空", 2, "error");
 				return false;
 			}
 			
-			if(type == ""){
-				art.dialog.tips("请选择类型", 2, "error");
-				return false;
-			}
-			
 			$.ajax({
-				url: "${ctx}/news/save?time=" + new Date(),
+				url: "${ctx}/train/save?time=" + new Date(),
 				type: "post",
 				data:{
 					id: $("#id").val(),
 					content: content,
 					title: title,
-					type: type
+					lawType: "${type}"
 				},
 				success: function(data){
 					if(data.success){
@@ -63,7 +57,7 @@
 		}
 
         function cancel(){
-        	window.location.href = "${ctx}/news/list";
+        	window.location.href = "${ctx}/train/list?type=${type}";
         }
     </script>
 </head>
@@ -73,8 +67,16 @@
         <div class="col-lg-12">
             <ol class="breadcrumb">
                 <li><i class="fa fa-home"></i><a href="index.html">首页</a></li>
-                <li><i class="fa fa-info"></i><a href="${ctx}/news/list">新闻管理</a></li>
-                <li><i class="fa fa-info"></i>新闻信息</li>
+                <c:choose>
+                	<c:when test="${type == 1}">
+                		<li><i class="fa fa-pencil-square"></i><a href="${ctx}/train/list?type=1">培训内容管理</a></li>
+                		<li><i class="fa fa-pencil-square"></i>培训内容</li>
+                	</c:when>
+                	<c:otherwise>
+                		<li><i class="fa fa-check-square-o"></i><a href="${ctx}/train/list?type=2">网络调查表管理</a></li>
+                		<li><i class="fa fa-check-square-o"></i>网络调查表信息</li>
+                	</c:otherwise>
+                </c:choose>
             </ol>
         </div>
     </div>
@@ -83,7 +85,14 @@
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h2><i class="fa fa-info red"></i><span class="break"></span><strong>新闻信息</strong></h2>
+                    <c:choose>
+	                	<c:when test="${type == 1}">
+	                		<h2><i class="fa fa-pencil-square red"></i><span class="break"></span><strong>培训内容</strong></h2>
+	                	</c:when>
+	                	<c:otherwise>
+	                		<h2><i class="fa fa-check-square-o red"></i><span class="break"></span><strong>网络调查表</strong></h2>
+	                	</c:otherwise>
+	                </c:choose>
                     
                     <c:if test="${mode != 'readonly'}">
 	                    <span style="float:right;">
@@ -101,19 +110,7 @@
                             <input type="text" id="title" name="title" class="form-control" value="${facadeBean.title}">
                         </div>
                     </div>
-                    
-                    <div class="form-group height_30">
-                        <label class="col-md-2 control-label">类型</label>
-                        <div class="col-md-7">
-	                        <select id="type" name="type" class="form-control">
-	                        	<option value="">请选择</option>
-	                            <c:forEach items="${typeList}" var="vo">
-									<option value="${vo.id}" <c:if test="${facadeBean.type == vo.id}">selected=selected</c:if>>${vo.name}</option>
-								</c:forEach>
-							</select>
-                        </div>
-                    </div>
-                    
+
 					<c:if test="${not empty facadeBean.id }"> 
                         <div class="form-group height_30">
                             <label class="col-md-2 control-label">创建时间</label>

@@ -143,16 +143,16 @@
 							<li>
 								<a href="javascript:void(0)"><i class="fa fa-flask"></i><span class="text"> 政策法规管理</span> <span class="fa fa-angle-down pull-right"></span></a>
 								<ul class="nav sub">									
-									<li><a href="javascript:void(0)" onclick="openFrame('accountController/list')"><i class="fa fa-gavel"></i><span class="text">政策管理</span></a></li>
-									<li><a href="javascript:void(0)" onclick="openFrame('accountController/list')"><i class="fa fa-lightbulb-o"></i><span class="text">法律法规管理</span></a></li>
+									<li><a href="javascript:void(0)" onclick="openFrame('law/list?type=1')"><i class="fa fa-gavel"></i><span class="text">政策管理</span></a></li>
+									<li><a href="javascript:void(0)" onclick="openFrame('law/list?type=2')"><i class="fa fa-lightbulb-o"></i><span class="text">法律法规管理</span></a></li>
 								</ul>
 							</li>
 						
 							<li>
 								<a href="javascript:void(0)"><i class="fa fa-book"></i><span class="text"> 教育培训管理</span> <span class="fa fa-angle-down pull-right"></span></a>
 								<ul class="nav sub">									
-									<li><a href="javascript:void(0)" onclick="openFrame('accountController/list')"><i class="fa fa-pencil-square"></i><span class="text">培训内容管理</span></a></li>
-									<li><a href="javascript:void(0)" onclick="openFrame('accountController/list')"><i class="fa fa-check-square-o"></i><span class="text">网络调查表管理</span></a></li>
+									<li><a href="javascript:void(0)" onclick="openFrame('train/list?type=1')"><i class="fa fa-pencil-square"></i><span class="text">培训内容管理</span></a></li>
+									<li><a href="javascript:void(0)" onclick="openFrame('train/list?type=2')"><i class="fa fa-check-square-o"></i><span class="text">网络调查表管理</span></a></li>
 								</ul>
 							</li>
 						
