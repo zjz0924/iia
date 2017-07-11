@@ -16,7 +16,7 @@
         <div class="col-lg-12">
             <ol class="breadcrumb">
                 <li><i class="fa fa-home"></i>首页</li>
-                <li><i class="fa fa-video-camera"></i>声像图片管理</li>
+                <li><i class="fa fa-info"></i>新闻管理</li>
             </ol>
         </div>
     </div>
@@ -25,7 +25,7 @@
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h2><i class="fa fa-video-camera red"></i><span class="break"></span><strong>声像图片管理</strong></h2>
+                    <h2><i class="fa fa-info red"></i><span class="break"></span><strong>新闻管理</strong></h2>
 
                     <span style="float:right;padding-top:5px;">
                         <button type="button" class="btn btn-primary btn-xs" onclick="goTo('detail')">添加</button>
@@ -33,7 +33,7 @@
                 </div>
 
                 <div class="panel-body">
-                    <form id="queryForm" name="queryForm" action="${ctx}/soundPic/list" method="post">
+                    <form id="queryForm" name="queryForm" action="${ctx}/news/list" method="post">
                         <table class="queryTable">
 							<tr>
 								<td class="labelTd">标题</td>
@@ -41,13 +41,21 @@
 									<input type="text" id="title" name="title" class="form-control input-sm" value="${title}">
 								</td>
 								
+								<td class="labelTd">类型</td>
+								<td class="contentTd">
+									<select id="type" name="type" class="form-control">
+										<option value="">请选择</option>
+										<c:forEach items="${typeList}" var="vo">
+											<option value="${vo.id}" <c:if test="${type == vo.id}">selected=selected</c:if>>${vo.name}</option>
+										</c:forEach>
+		                        	</select>
+								</td>
+								
 								<td class="labelTd">创建时间</td>
 								<td colspan="3">
 									<input type="text" id="startCreateTime" name="startCreateTime" onclick="WdatePicker({dateFmt:'yyyy-MM-dd',maxDate:'#F{$dp.$D(\'endCreateTime\')}'})" class="form-control input-sm" value="${startCreateTime}" style="width:20%;display:inline-block"/> - 
 									<input type="text" id="endCreateTime" name="endCreateTime" onclick="WdatePicker({dateFmt:'yyyy-MM-dd',minDate:'#F{$dp.$D(\'startCreateTime\')}'})" class="form-control input-sm" value="${endCreateTime}" style="width:20%;display:inline-block"/>
-								</td>
-								
-								<td class="text-right" colspan="4" style="padding-right:20px;">
+									 &nbsp;&nbsp;&nbsp;&nbsp;
 									<button onclick="doSubmit()" type="button" class="btn btn-primary"><i class="fa fa-search"></i>查询</button>
 							   		<button onclick="doCancel()" type="button" class="btn btn-danger"><i class="fa fa-ban"></i>取消</button>
 								</td>
@@ -60,6 +68,7 @@
                                     <tr class="text_size_14">
                                         <th>序号</th>
                                         <th>标题</th>
+                                        <th>类型</th>
                                         <th>创建时间</th>
                                         <th>操作</th>
                                     </tr>
@@ -70,6 +79,7 @@
                                         <tr>
                                             <td class="text-center text_size_14" style="width:8%;">${vst.index + 1}</td>
                                             <td class="text-center text_size_14">${vo.title}</td>
+                                            <td class="text-center text_size_14">${vo.newsType.name}</td>
                                             <td class="text-center text_size_14" style="width:15%;"><fmt:formatDate value='${vo.createTime}' type="date" pattern="yyyy-MM-dd hh:mm:ss" /></td>
                                             <td style="width:16%;">
                                                 <button type="button" class="btn btn-default btn_padding" onclick="goTo('detail?id=${vo.id}&mode=readonly')">查看</button>

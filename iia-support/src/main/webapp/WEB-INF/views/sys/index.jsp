@@ -54,7 +54,7 @@
 				frame.src = "${ctx}/" + src;
 			}
 			
-			function adapter(height) {  alert(2);
+			function adapter(height) {
 				$("#modular").height(height < 650 ? 650 : height);
 			}
 			
@@ -135,8 +135,8 @@
 							<li>
 								<a href="javascript:void(0)"><i class="fa fa-eye"></i><span class="text"> 新闻中心管理</span> <span class="fa fa-angle-down pull-right"></span></a>
 								<ul class="nav sub">									
-									<li><a href="javascript:void(0)" onclick="openFrame('accountController/list')"><i class="fa fa-list"></i><span class="text">类型管理</span></a></li>
-									<li><a href="javascript:void(0)" onclick="openFrame('accountController/list')"><i class="fa fa-info"></i><span class="text">新闻管理</span></a></li>
+									<li><a href="javascript:void(0)" onclick="openFrame('newsType/list')"><i class="fa fa-list"></i><span class="text">类型管理</span></a></li>
+									<li><a href="javascript:void(0)" onclick="openFrame('news/list')"><i class="fa fa-info"></i><span class="text">新闻管理</span></a></li>
 								</ul>
 							</li>
 						

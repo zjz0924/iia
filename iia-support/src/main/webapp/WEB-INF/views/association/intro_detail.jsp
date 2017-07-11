@@ -110,7 +110,7 @@
 					</h2>
 					
 					<span style="float:right;">
-						<button type="button" id="editBtn" class="btn btn-primary btn-xs" onclick="edit()">编辑</button>
+						<button type="button" id="editBtn" class="btn btn-primary btn-xs"  style="margin-top:5px;" onclick="edit()">编辑</button>
 						<button type="button" id="saveBtn" class="btn btn-primary btn-xs" onclick="save()" style="display:none;">保存</button>
 						<button type="button" id="cancelBtn" class="btn btn-danger btn-xs" onclick="cancel()" style="display:none;">取消</button>
 					</span>
