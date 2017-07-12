@@ -158,10 +158,8 @@
 						
 							<li>
 								<a href="javascript:void(0)"><i class="fa fa-male"></i><span class="text"> 会员服务管理</span> <span class="fa fa-angle-down pull-right"></span></a>
-								<ul class="nav sub">									
-									<li><a href="javascript:void(0)" onclick="openFrame('accountController/list')"><i class="fa fa-comments"></i><span class="text">入会须知管理</span></a></li>
-									<li><a href="javascript:void(0)" onclick="openFrame('accountController/list')"><i class="fa fa-list-ol"></i><span class="text">入会程序管理</span></a></li>
-									<li><a href="javascript:void(0)" onclick="openFrame('accountController/list')"><i class="fa fa-comments-o"></i><span class="text">会员权利与义务管理</span></a></li>
+								<ul class="nav sub">
+									<li><a href="javascript:void(0)" onclick="openFrame('server/list')"><i class="fa fa-comments"></i><span class="text">服务内容</span></a></li>
 								</ul>
 							</li>
 						
@@ -173,9 +171,9 @@
 								</ul>
 							</li>
 						
-							<li><a href="index.html"><i class="fa fa-bullhorn"></i><span class="text"> 协会活动管理</span></a></li>
+							<li><a href="javascript:void(0)" onclick="openFrame('activity/list')"><i class="fa fa-bullhorn"></i><span class="text"> 协会活动管理</span></a></li>
 						
-							<li><a href="index.html"><i class="fa fa-phone-square"></i><span class="text"> 联系方式管理</span></a></li>
+							<li><a href="javascript:void(0)" onclick="openFrame('contact/detail')"><i class="fa fa-phone-square"></i><span class="text"> 联系方式管理</span></a></li>
 											
 							<li>
 								<a href="javascript:void(0)"><i class="fa fa-cogs"></i><span class="text"> 系统管理</span> <span class="fa fa-angle-down pull-right"></span></a>
