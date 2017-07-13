@@ -26,7 +26,10 @@
 					<h2>欢迎使用</h2>
 					
 					当前用户：${currentAccount.userName}</br>
-					登录时间： ${loginTime}
+					登录时间： ${loginTime}</br>
+					
+					会员总数：${memberNum}
+					
 				</div>
 			</div>
 		</div>

@@ -71,7 +71,6 @@
     <div class="row">
         <div class="col-lg-12">
             <ol class="breadcrumb">
-                <li><i class="fa fa-home"></i>首页</li>
                 <li><i class="fa fa-link"></i><a href="${ctx}/linkController/list">友情链接管理</a></li>
                 <li><i class="fa fa-link"></i>链接信息</li>
             </ol>

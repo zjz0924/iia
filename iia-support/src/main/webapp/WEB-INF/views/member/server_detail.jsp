@@ -67,7 +67,6 @@
     <div class="row">
         <div class="col-lg-12">
             <ol class="breadcrumb">
-                <li><i class="fa fa-home"></i><a href="index.html">首页</a></li>
                 <li><i class="fa fa-comments"></i><a href="${ctx}/server/list">服务内容管理</a></li>
                 <li><i class="fa fa-comments"></i>服务</li>
             </ol>

@@ -18,7 +18,7 @@
                 $("#saveBtn").attr("class", "btn btn-primary disabled");
 
                 if(resultCode == "01" || resultCode == "03"){ 
-                    window.location.href = "${ctx}/newsType/list";
+                    window.location.href = "${ctx}/group/list";
                 }else{
                     // 设置按钮可点
                     $("#saveBtn").attr("class", "btn btn-primary");
@@ -48,8 +48,8 @@
     <div class="row">
         <div class="col-lg-12">
             <ol class="breadcrumb">
-                <li><i class="fa fa-list"></i><a href="${ctx}/newsType/list">新闻类型</a></li>
-                <li><i class="fa fa-list"></i>类型信息</li>
+                <li><i class="fa fa-group"></i><a href="${ctx}/group/list">会员组管理</a></li>
+                <li><i class="fa fa-group"></i>会员组信息</li>
             </ol>
         </div>
     </div>
@@ -58,11 +58,11 @@
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h2><i class="fa fa-list red"></i><span class="break"></span><strong>类型信息</strong></h2>
+                    <h2><i class="fa fa-group red"></i><span class="break"></span><strong>会员组信息</strong></h2>
                 </div>
 
                 <div class="panel-body" style="padding-top:30px;padding-left:30px;">
-                    <form action="${ctx}/newsType/save" method="post" onsubmit="return checkData();">
+                    <form action="${ctx}/group/save" method="post" onsubmit="return checkData();">
                         <input type="hidden" id="id" name="id" value="${facadeBean.id}"/>
                         <div class="form-group height_30">
                             <label class="col-md-2 control-label">名称</label>
@@ -70,16 +70,6 @@
                                 <input type="text" id="name" name="name" class="form-control" value="${facadeBean.name}">
                             </div>
                         </div>
-                        
-                        <div class="form-group height_30">
-		                    <label class="col-md-2 control-label">状态</label>
-		                    <div class="col-md-3 height_30" style="padding-top: 5px;">
-								<select id="isShow" name="isShow" class="form-control">
-									<option value="Y" <c:if test="${facadeBean.isShow == 'Y'}">selected=selected</c:if>>显示</option>
-		                            <option value="N" <c:if test="${facadeBean.isShow == 'N'}">selected=selected</c:if>>隐藏</option>
-	                        	</select>
-		                    </div>
-		                </div>
 
 						<c:if test="${not empty facadeBean.id}">
 	                        <div class="form-group height_30">

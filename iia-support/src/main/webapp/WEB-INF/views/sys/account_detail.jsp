@@ -65,7 +65,6 @@
 	<div class="row">
 		<div class="col-lg-12">
 			<ol class="breadcrumb">
-				<li><i class="fa fa-home"></i><a href="javascript:void(0)" onclick="">首页</a></li>
 				<li><i class="fa fa-user"></i><a href="${ctx}/accountController/list">用户管理</a></li>
 				<li><i class="fa fa-user"></i>用户信息</li>
 			</ol>

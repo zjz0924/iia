@@ -15,7 +15,6 @@
     <div class="row">
         <div class="col-lg-12">
             <ol class="breadcrumb">
-                <li><i class="fa fa-home"></i>首页</li>
                 <li><i class="fa fa-comments"></i>服务内容</li>
             </ol>
         </div>

@@ -1,19 +1,23 @@
 package cn.wow.support.web;
 
 import javax.servlet.http.HttpServletRequest;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
 import cn.wow.common.domain.Contact;
 import cn.wow.common.service.ContactService;
+import cn.wow.common.utils.AjaxVO;
 import cn.wow.support.utils.Contants;
 
 @Controller
 @RequestMapping(value = "contact")
-public class ContactController{
+public class ContactController extends CommonController{
 
     private static Logger logger = LoggerFactory.getLogger(ContactController.class);
 
@@ -27,36 +31,29 @@ public class ContactController{
         Contact contact = contactService.selectOne(CONTACT_ID);
         model.addAttribute("facadeBean", contact);
 
-        return "contact_detail";
+        return "contact/contact_detail";
     }
 
+    @ResponseBody
     @RequestMapping(value = "/save")
-    public String save(HttpServletRequest request, Model model, String name, String address, String url, String phone, String fax){
-        String resultCode = "";
-        String resultMsg = "";
-        Contact contact = null;
-
+    public AjaxVO save(HttpServletRequest request, Model model, String name, String address, String url, String phone, String fax){
+        AjaxVO vo = new AjaxVO();
+        
         try{
-            contact = contactService.selectOne(CONTACT_ID);
+        	Contact contact = contactService.selectOne(CONTACT_ID);
             contact.setName(name);
             contact.setAddress(address);
             contact.setUrl(url);
             contact.setPhone(phone);
             contact.setFax(fax);
             contactService.update(contact);
-
-            resultCode = Contants.EDIT_SUCCESS;
-            resultMsg = Contants.EDIT_SUCCESS_MSG;
+            
+            getResponse(vo, Contants.SUC_EDIT);
         }catch(Exception ex){
             ex.printStackTrace();
-            resultCode = Contants.EXCEPTION;
-            resultMsg = Contants.EXCEPTION_MSG;
+            getResponse(vo, Contants.FAIL_EDIT);
         }
-
-        model.addAttribute("resultCode",  resultCode);
-        model.addAttribute("resultMsg", resultMsg);
-        model.addAttribute("facadeBean", contact);
-        return "contact_detail";
+        return vo;
     }
 
 }

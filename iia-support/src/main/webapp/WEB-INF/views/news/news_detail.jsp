@@ -72,7 +72,6 @@
     <div class="row">
         <div class="col-lg-12">
             <ol class="breadcrumb">
-                <li><i class="fa fa-home"></i><a href="index.html">首页</a></li>
                 <li><i class="fa fa-info"></i><a href="${ctx}/news/list">新闻管理</a></li>
                 <li><i class="fa fa-info"></i>新闻信息</li>
             </ol>

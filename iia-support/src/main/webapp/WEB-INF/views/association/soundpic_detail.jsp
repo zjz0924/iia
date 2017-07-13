@@ -65,7 +65,6 @@
     <div class="row">
         <div class="col-lg-12">
             <ol class="breadcrumb">
-                <li><i class="fa fa-home"></i><a href="index.html">首页</a></li>
                 <li><i class="fa fa-video-camera"></i><a href="${ctx}/soundPic/list">声像图片管理</a></li>
                 <li><i class="fa fa-video-camera"></i>声像图片</li>
             </ol>

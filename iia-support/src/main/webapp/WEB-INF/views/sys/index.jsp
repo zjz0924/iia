@@ -166,8 +166,8 @@
 							<li>
 								<a href="javascript:void(0)"><i class="fa fa-user"></i><span class="text"> 会员管理</span> <span class="fa fa-angle-down pull-right"></span></a>
 								<ul class="nav sub">									
-									<li><a href="javascript:void(0)" onclick="openFrame('accountController/list')"><i class="fa fa-group"></i><span class="text">用户组管理</span></a></li>
-									<li><a href="javascript:void(0)" onclick="openFrame('accountController/list')"><i class="fa fa-user"></i><span class="text">会员信息管理</span></a></li>
+									<li><a href="javascript:void(0)" onclick="openFrame('group/list')"><i class="fa fa-group"></i><span class="text">会员组管理</span></a></li>
+									<li><a href="javascript:void(0)" onclick="openFrame('member/list')"><i class="fa fa-user"></i><span class="text">会员管理</span></a></li>
 								</ul>
 							</li>
 						

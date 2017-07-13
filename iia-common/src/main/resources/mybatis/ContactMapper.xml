@@ -15,9 +15,7 @@
 	</sql>
 
 	<select id="selectOne" parameterType="java.lang.Long" resultMap="BaseResultMap">
-		select
-		<include refid="Base_Column_List" />
-		from contact where id = #{id,jdbcType=BIGINT}
+		select <include refid="base_columns" /> from contact where id = #{id,jdbcType=BIGINT}
 	</select>
 
 	<update id="update" parameterType="cn.wow.common.domain.Contact">

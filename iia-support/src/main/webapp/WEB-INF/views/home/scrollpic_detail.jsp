@@ -61,7 +61,6 @@
     <div class="row">
         <div class="col-lg-12">
             <ol class="breadcrumb">
-                <li><i class="fa fa-home"></i>首页</li>
                 <li><i class="fa fa-picture-o"></i><a href="${ctx}/scrollPicController/list">滚动大图管理</a></li>
                 <li><i class="fa fa-picture-o"></i>照片信息</li>
             </ol>

@@ -15,7 +15,6 @@
     <div class="row">
         <div class="col-lg-12">
             <ol class="breadcrumb">
-                <li><i class="fa fa-home"></i>首页</li>
                 <li><i class="fa fa-video-camera"></i>声像图片管理</li>
             </ol>
         </div>

@@ -15,7 +15,6 @@
     <div class="row">
         <div class="col-lg-12">
             <ol class="breadcrumb">
-                <li><i class="fa fa-home"></i>首页</li>
                 <c:choose>
                 	<c:when test="${type == 1}">
                 		<li><i class="fa fa-gavel"></i>政策管理</li>

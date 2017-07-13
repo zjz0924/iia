@@ -65,7 +65,6 @@
     <div class="row">
         <div class="col-lg-12">
             <ol class="breadcrumb">
-                <li><i class="fa fa-home"></i><a href="index.html">首页</a></li>
                 <li><i class="fa fa-bullhorn"></i><a href="${ctx}/activity/list">协会活动管理</a></li>
                 <li><i class="fa fa-bullhorn"></i>活动</li>
             </ol>
