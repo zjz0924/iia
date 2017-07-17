@@ -9,7 +9,7 @@
     	<meta charset="utf-8">
 	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	    <meta name="viewport" content="width=device-width, initial-scale=1">
-	    <title>Login</title>		
+	    <title>后台管理系统</title>		
 		
         <!--[if lt IE 9]>
 		<link href="http://fonts.useso.com/css?family=Open+Sans:400" rel="stylesheet" type="text/css" />
@@ -41,7 +41,7 @@
 				<div class="row">
 					<div class="login-box">
 						<div class="header">
-							Login
+							后台管理系统
 						</div>
 					
 						<form id="loginForm" action="${ctx}/login" method="post" class="form-horizontal login" >
