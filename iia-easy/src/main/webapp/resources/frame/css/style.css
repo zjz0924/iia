@@ -306,7 +306,7 @@ button:hover {
 	width:100%;
 }
 .inner {
-	width:100%;
+	width:1000px;
 	margin:0px auto;
 	overflow:hidden;
 }

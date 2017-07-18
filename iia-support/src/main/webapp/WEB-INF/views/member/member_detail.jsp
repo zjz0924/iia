@@ -41,6 +41,11 @@
 			}
 			
 			if(!isRequired("email", "邮箱")) return false;
+			
+			if (!checkEmail(email)) {
+				art.dialog.tips("邮箱格式不正确", 2, "error");
+				return false;
+			}
         }
     </script>
 </head>

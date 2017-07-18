@@ -15,15 +15,15 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import cn.wow.common.domain.Account;
-import cn.wow.common.service.AccountService;
+import cn.wow.common.domain.Member;
+import cn.wow.common.service.MemberService;
 import cn.wow.support.utils.Contants;
 
 public class FormAuthenticationExtendFilter extends FormAuthenticationFilter {
 	private static Logger logger = LoggerFactory.getLogger(FormAuthenticationExtendFilter.class);
 	
 	@Autowired
-	private AccountService accountService;
+	private MemberService memberService;
 	
 	@Override
 	protected boolean onLoginSuccess(AuthenticationToken token, Subject subject, ServletRequest request, ServletResponse response) throws Exception {
@@ -40,9 +40,9 @@ public class FormAuthenticationExtendFilter extends FormAuthenticationFilter {
 		
 		String username = (String)SecurityUtils.getSubject().getPrincipal();
 		if(StringUtils.isNotBlank(username)){
-			Account currentAccount = accountService.selectByAccountName(username);
+			Member member = memberService.selectByUserName(username);
 		
-			httpServletRequest.getSession().setAttribute(Contants.CURRENT_ACCOUNT, currentAccount);
+			httpServletRequest.getSession().setAttribute(Contants.CURRENT_MEMBER, member);
 		}
 		
 		return false;

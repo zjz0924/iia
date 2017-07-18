@@ -9,8 +9,56 @@
 	    <meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>header</title>
 		
-		<script type="text/javascript" src="${ctx}/resources/frame/js/ddsmoothmenu.js"></script>
+		<script type="text/javascript" src="${ctx}/resources/js/artDialog4.1.7/artDialog.source.js"></script>
+		<script type="text/javascript" src="${ctx}/resources/js/artDialog4.1.7/jquery.artDialog.source.js?skin=idialog"></script>
+		<script type="text/javascript" src="${ctx}/resources/js/artDialog4.1.7/plugins/iframeTools.source.js"></script>
 		
+		<script type="text/javascript" src="${ctx}/resources/frame/js/ddsmoothmenu.js"></script>
+		<script type="text/javascript">
+			function login(){
+				art.dialog.open('${ctx}/member/loginPage',{
+					id: "loginDialog",
+			    	padding: 0,
+					width: 500,
+					height: 300,
+					lock: true,
+					resize: false,
+					close: function(){
+						window.location.reload();
+					}
+				});
+			}
+			
+			
+			function register() {
+				art.dialog.open('${ctx}/member/registerPage', {
+					id : "registerDialog",
+					padding : 0,
+					width : 600,
+					height : 550,
+					resize : false,
+					close : function() {
+						window.location.reload();
+					},
+					lock: true
+				});
+			}
+
+			function logout() {
+				$.ajax({
+					url : "${ctx}/member/logout?time=" + new Date(),
+					success : function(data) {
+						if (data.success) {
+							art.dialog.tips(data.msg, 2, "succeed", function() {
+								window.location.reload();
+							});
+						} else {
+							art.dialog.tips(data.msg, 2, "error");
+						}
+					}
+				});
+			}
+		</script>
 	</head>
 	
 	<body>
@@ -35,8 +83,17 @@
 					
 					<!-- Top Bar Text Start -->
 					<p class="text">欢迎您加入${contact.name}，协会会员已有[ <span style="color:red;font-weight:bold;">${memberNum}</span> ]家企业！
-						<a href="javascript:void()">[登录]</a>&nbsp;
-						<a href="javascript:void()">[注册]</a>
+						<c:choose>
+							<c:when test="${empty currentMember.userName}">
+								<a href="javascript:void()" onclick="login()">[登录]</a>&nbsp;
+								<a href="javascript:void()" onclick="register()">[注册]</a>
+							</c:when>
+							<c:otherwise>
+								&nbsp;&nbsp;&nbsp;&nbsp;
+								<span>${currentMember.userName}</span>&nbsp;&nbsp;
+								<a href="javascript:void()" onclick="logout()">[退出]</a>
+							</c:otherwise>
+						</c:choose>
 					</p>
 					<!-- Top Bar Text End -->
 				</div>
@@ -50,7 +107,7 @@
 					<div class="inner">
 						<!-- Logo Start -->
 						<div class="logo">
-							<a href="index.html"><img src="${ctx}/resources/frame/images/logo.png" alt="" /></a>
+							<a href="${ctx}/index"><img src="${ctx}/resources/frame/images/logo.png" alt="" /></a>
 						</div>
 						<!-- Logo End -->
 						

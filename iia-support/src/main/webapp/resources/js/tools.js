@@ -237,6 +237,17 @@ function confirm(tips, url){
 }
 
 
+/**
+ * 检查 email 格式
+ */
+function checkEmail(email) {
+	var re = /^(?:\w+\.?)*\w+@(?:\w+\.)*\w+$/;
+	if (!re.test(email)) {
+		return false;
+	}
+	return true;
+}
+
 
 
 

@@ -41,5 +41,9 @@ public class MemberServiceImpl implements MemberService{
     	PageHelperExt.startPage(map);
     	return memberDao.selectAllList(map);
     }
+    
+    public Member selectByUserName(String userName){
+    	return memberDao.selectByUserName(userName);
+    }
 
 }

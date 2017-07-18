@@ -14,5 +14,7 @@ public interface MemberService {
     public int deleteByPrimaryKey(Long id);
 
     public List<Member> selectAllList(Map<String, Object> map);
+    
+    public Member selectByUserName(String userName);
 
 }

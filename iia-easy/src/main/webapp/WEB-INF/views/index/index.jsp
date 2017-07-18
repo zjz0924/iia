@@ -23,70 +23,36 @@
 </head>
 
 <body>
-		<%@include file="../common/header.html" %>
-
+		<%@include file="../common/header.jsp" %>
+		
 		<!-- Banner Start -->
 		<div id="banner">
 			<div class="slider-wrapper theme-default">
 				<div id="slider" class="nivoSlider">
-					<a href="#"><img src="${ctx}/resources/frame/images/banner1.jpg" title="#banner1" alt="" /></a> 
-					<a href="#"><img src="${ctx}/resources/frame/images/banner2.jpg" title="#banner2" alt="" /></a> 
-					<a href="#"><img src="${ctx}/resources/frame/images/banner3.jpg" title="#banner3" alt="" /></a>
+					<c:forEach items="${scrollPicList}" var="vo" varStatus="vst">
+						<a href="javascript:void(0)"><img src="${resUrl}${vo.url}" title="#banner${vst.index + 1}" alt="" /></a> 
+					</c:forEach>
 				</div>
 				
 				<!-- Banner Caption Start -->
-				<div id="banner1" class="nivo-html-caption">
-					<div class="ban-capt-desc">
-						<div class="ban-capt-mid">
-							<div class="ban-capt-in">
-								<h1 class="white">"I pray that all of them may be one…that the world may believe you have sent me."</h1>
-								<p>Fusce auctor nulla eget lacus pretium imperdiet ultrices
-									turpis varius. Nunc justo nibh, tincidunt ut ullamcorper
-									condimentum, dignissim id sapien. Fusce auctor nulla eget lacus
-									pretium imperdiet ultrices turpis varius. Nunc justo nibh,
-									tincidunt ut ullamcorper condimentum, dignissim id sapien.</p>
+				<c:forEach items="${scrollPicList}" var="vo" varStatus="vst">
+					<div id="banner${vst.index + 1}" class="nivo-html-caption">
+						<div class="ban-capt-desc">
+							<div class="ban-capt-mid">
+								<div class="ban-capt-in">
+									<h3 class="white">${vo.content}</h3>
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
+				</c:forEach>
 				<!-- Banner Caption End -->
-				<!-- Banner Caption Start -->
-				<div id="banner2" class="nivo-html-caption">
-					<div class="ban-capt-desc">
-						<div class="ban-capt-mid">
-							<div class="ban-capt-in">
-								<h1 class="white">"I pray that all of them may be one…that
-									the world may believe you have sent me."</h1>
-								<p>Fusce auctor nulla eget lacus pretium imperdiet ultrices
-									turpis varius. Nunc justo nibh, tincidunt ut ullamcorper
-									condimentum, dignissim id sapien. Fusce auctor nulla eget lacus
-									pretium imperdiet ultrices turpis varius. Nunc justo nibh,
-									tincidunt ut ullamcorper condimentum, dignissim id sapien.</p>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!-- Banner Caption End -->
-				<!-- Banner Caption Start -->
-				<div id="banner3" class="nivo-html-caption">
-					<div class="ban-capt-desc">
-						<div class="ban-capt-mid">
-							<div class="ban-capt-in">
-								<h1 class="white">"I pray that all of them may be one…that
-									the world may believe you have sent me."</h1>
-								<p>Fusce auctor nulla eget lacus pretium imperdiet ultrices
-									turpis varius. Nunc justo nibh, tincidunt ut ullamcorper
-									condimentum, dignissim id sapien. Fusce auctor nulla eget lacus
-									pretium imperdiet ultrices turpis varius. Nunc justo nibh,
-									tincidunt ut ullamcorper condimentum, dignissim id sapien.</p>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!-- Banner Caption End -->
+				
 			</div>
 		</div>
 		<!-- Banner End -->
+		
+		
 		<!-- Content Section Start -->
 		<div id="contentsec">
 			<div class="inner">
@@ -345,92 +311,27 @@
 					<!-- One Third Box End -->
 				</div>
 				<!-- One Third Box End -->
+				
+				
 				<!-- Footer Scroller Start -->
 				<div class="fullwidth left scroll-sec">
-					<a id="logoPrevious">Previous</a>
+					<a id="logoPrevious" style="margin:-8px 17px 0px 0px;height: 30px;">Previous</a>
 					<div id="logoscroll" class="scroller">
 						<ul>
-							<li><a href="#"><img src="${ctx}/resources/frame/images/logo1.gif" alt="" /></a></li>
-							<li><a href="#"><img src="${ctx}/resources/frame/images/logo2.gif" alt="" /></a></li>
-							<li><a href="#"><img src="${ctx}/resources/frame/images/logo3.gif" alt="" /></a></li>
-							<li><a href="#"><img src="${ctx}/resources/frame/images/logo4.gif" alt="" /></a></li>
-							<li><a href="#"><img src="${ctx}/resources/frame/images/logo5.gif" alt="" /></a></li>
-							<li><a href="#"><img src="${ctx}/resources/frame/images/logo6.gif" alt="" /></a></li>
+							<c:forEach items="${linkList}" var="vo">
+								<li><a href="${vo.url}">${vo.name}</a></li>
+							</c:forEach>
 						</ul>
 					</div>
-					<a id="logoNext">Next</a>
+					<a id="logoNext" style="margin:-8px 17px 0px 0px;height: 30px;">Next</a>
 				</div>
 				<!-- Footer Scroller End -->
 			</div>
 		</div>
 		<!-- Content Section End -->
-		<!-- Footer Start -->
-		<div id="footer">
-			<div class="footer-rays">
-				<div class="inner">
-					<!-- Footer Logo - Navigation - Copyrights Start -->
-					<div class="foot-navi-coopyrights">
-						<div class="footlogo-nav">
-							<!-- Footer Logo Start -->
-							<div class="footlogo">
-								<a href="#"><img src="${ctx}/resources/frame/images/logo-foot.png" alt="" /></a>
-							</div>
-							<!-- Footer Logo End -->
-							<!-- Footer Navigation Start -->
-							<div class="footnav">
-								<ul>
-									<li><a href="#">Home</a></li>
-									<li><a href="#">About Us</a></li>
-									<li><a href="#">Get Involved</a></li>
-									<li><a href="#">Worship</a></li>
-									<li><a href="#">Mission</a></li>
-									<li><a href="#">Resources</a></li>
-									<li><a href="#">News and Events</a></li>
-									<li><a href="#">Contact Us</a></li>
-								</ul>
-							</div>
-							<!-- Footer Navigation End -->
-						</div>
-						<!-- Footer Copyrights Start -->
-						<p class="copyrights">
-							&copy; Copyright &copy; 2013.Company name All rights reserved.<a
-								target="_blank" href="http://www.cssmoban.com/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a>
-							- More Templates <a href="http://www.cssmoban.com/"
-								target="_blank" title="模板之家">模板之家</a>
-						</p>
-						<!-- Footer Copyrights End -->
-					</div>
-					<!-- Footer Logo - Navigation - Copyrights End -->
-					<!-- Follow Us - Go to Top Start -->
-					<div class="followus">
-						<!-- Go to Top Start -->
-						<div class="gotop">
-							<a href="#top">&nbsp;</a> <span>Back to Top</span>
-						</div>
-						<!-- Go to Top End -->
-						<!-- Follow Us Start -->
-						<div class="follow">
-							<h5 class="white">Follow Us</h5>
-							<ul>
-								<li><a href="#"><img src="${ctx}/resources/frame/images/twitter-icon.png"
-										alt="" /></a></li>
-								<li><a href="#"><img src="${ctx}/resources/frame/images/facebook-icon.png"
-										alt="" /></a></li>
-								<li><a href="#"><img src="${ctx}/resources/frame/images/vimeo-icon.png" alt="" /></a></li>
-								<li><a href="#"><img src="${ctx}/resources/frame/images/lastfm-icon.png"
-										alt="" /></a></li>
-								<li><a href="#"><img src="${ctx}/resources/frame/images/myspace-icon.png"
-										alt="" /></a></li>
-							</ul>
-						</div>
-						<!-- Follow Us End -->
-					</div>
-					<!-- Follow Us - Go to Top End -->
-					<div class="clear"></div>
-				</div>
-			</div>
-		</div>
-		<!-- Footer End -->
+	
+		<%@include file="../common/footer.jsp" %>
+	
 	</div>
 	<!-- Wrapper End -->
 
