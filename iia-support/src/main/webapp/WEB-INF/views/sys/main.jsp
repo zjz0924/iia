@@ -1,4 +1,6 @@
 <%@ page contentType="text/html;charset=utf-8" pageEncoding="utf-8"%>
+<%@include file="/page/taglibs.jsp"%>
+<%@include file="/page/NavPageBar.jsp"%>
 
 <html>
 <head>
